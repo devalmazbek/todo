@@ -1,0 +1,35 @@
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+}
+
+.list-item-btn span {
+  background-color: #ecedf6;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.list-item-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.list-item-content p {
+  font-family: "Curier New", sans-serif;
+  margin: 0 0 3px;
+  font-size: 0.8rem;
+}
+
+.list-item .checkbox {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(222, 223, 225);
+  margin-right: 10px;
+}

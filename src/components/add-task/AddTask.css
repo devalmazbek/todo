@@ -1,0 +1,14 @@
+.add-task button {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  height: auto;
+  overflow: hidden;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  text-transform: capitalize;
+  background-color: #646ff0;
+  color: #fff;
+}

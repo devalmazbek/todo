@@ -1,0 +1,12 @@
+.filter select {
+  background-color: #cccdde;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 1rem;
+  width: 150px;
+}
+
+.filter select option {
+  padding: 15px 0;
+}

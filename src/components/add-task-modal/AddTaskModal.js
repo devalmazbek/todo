@@ -31,8 +31,6 @@ function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
 
     onAddItem([...todo, newItem]);
     handleCancel();
-
-    localStorage.setItem("todo", JSON.stringify(todo));
   };
 
   return (

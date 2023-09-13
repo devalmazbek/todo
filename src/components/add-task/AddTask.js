@@ -1,9 +1,9 @@
 import "./AddTask.css";
 
-function AddTask() {
+function AddTask({ onAdd }) {
   return (
-    <div class="add-task">
-      <button>add task</button>
+    <div className="add-task">
+      <button onClick={() => onAdd(true)}>add task</button>
     </div>
   );
 }

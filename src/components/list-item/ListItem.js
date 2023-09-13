@@ -1,20 +1,32 @@
 import "./ListItem.css";
 
-function ListItem({ item }) {
+function ListItem({ item, onSelect, onChangeStatus, onRemoveItem }) {
+  const done = item.status ? "done" : "";
   return (
-    <div class="list-item">
-      <div class="list-item-content">
-        <input type="checkbox" className="checkbox" />
-        <div class="list-item-description">
-          <p>{item.name}</p>
+    <div className="list-item">
+      <div className="list-item-content">
+        <input
+          type="checkbox"
+          className="checkbox"
+          value={item.status}
+          checked={item.status}
+          onChange={() => onChangeStatus(item.id)}
+        />
+        <div className="list-item-description">
+          <p className={done}>{item.title}</p>
           <p>
-            <span>{item.time}</span> | <span>{item.date}</span>
+            <span>{item.time.slice(0, 5)}</span> | <span>{item.date}</span>
           </p>
         </div>
       </div>
-      <div class="list-item-btn">
-        <span class="material-symbols-outlined">edit</span>
-        <span class="material-symbols-outlined">delete</span>
+      <div className="list-item-btn">
+        <span className="material-symbols-outlined">edit</span>
+        <span
+          className="material-symbols-outlined"
+          onClick={() => onRemoveItem(item.id)}
+        >
+          delete
+        </span>
       </div>
     </div>
   );

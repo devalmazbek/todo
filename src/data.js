@@ -1,20 +1,23 @@
 export const data = [
   {
-    name: "Build react app",
-    complete: false,
-    time: "12:00",
+    id: 1,
+    title: "Build react app",
+    status: false,
+    time: "12:01",
     date: "11.09.2023",
   },
   {
-    name: "Drink coffee",
-    complete: false,
-    time: "12:00",
+    id: 2,
+    title: "Drink coffee",
+    status: false,
+    time: "12:02",
     date: "11.09.2023",
   },
   {
-    name: "Play Tennis",
-    complete: false,
-    time: "12:00",
+    id: 3,
+    title: "Play Tennis",
+    status: false,
+    time: "12:03",
     date: "11.09.2023",
   },
 ];

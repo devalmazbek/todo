@@ -1,18 +1,58 @@
-import AddTask from "../add-task/AddTask";
+import { useState } from "react";
+import "./AddTaskModal.css";
 
-function AddTaskModal() {
+let id = 10;
+
+function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
+  const [title, setTitle] = useState(null);
+  const [status, setStatus] = useState(0);
+
+  const handleCancel = () => {
+    showModal(!isVisible);
+  };
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
+  };
+
+  const handleAddItem = (e) => {
+    e.preventDefault();
+    const newItem = {
+      id: id++,
+      title,
+      status,
+      time: new Date().toLocaleTimeString(),
+      date: new Date().toLocaleDateString(),
+    };
+
+    onAddItem([...todo, newItem]);
+    handleCancel();
+
+    localStorage.setItem("todo", JSON.stringify(todo));
+  };
+
   return (
-    <div class="add-task-modal">
-      <h2>Add TODO</h2>
-      <label>Title</label>
-      <input type="text" />
-      <label>Status</label>
-      <select>
-        <option value="incomplete">Incomplete</option>
-        <option value="completed">Completed</option>
-      </select>
-      <button>add task</button>
-      <button>cancel</button>
+    <div className="container">
+      <div className="add-task-modal">
+        <h2>Add TODO</h2>
+        <form>
+          <label>Title</label>
+          <input type="text" onChange={handleTitle} />
+          <label>Status</label>
+          <select onChange={handleStatus}>
+            <option value={0}>Incomplete</option>
+            <option value={1}>Completed</option>
+          </select>
+          <div className="add-task-modal-btn">
+            <button onClick={handleAddItem}>add task</button>
+            <button onClick={handleCancel}>cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

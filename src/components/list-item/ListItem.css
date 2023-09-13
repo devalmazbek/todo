@@ -33,3 +33,8 @@
   background-color: rgb(222, 223, 225);
   margin-right: 10px;
 }
+
+.list-item .done {
+  text-decoration: line-through;
+  color: silver;
+}

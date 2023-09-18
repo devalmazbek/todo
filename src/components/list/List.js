@@ -3,7 +3,15 @@ import ListItem from "../list-item/ListItem";
 
 import "./List.css";
 
-function List({ todo, onSelect, onChangeStatus, onRemoveItem, status }) {
+function List({
+  todo,
+  onSelect,
+  onChangeStatus,
+  onRemoveItem,
+  status,
+  setIsVisible,
+  isVisible,
+}) {
   let filteredItems = todo;
 
   if (status === "incomplete") {
@@ -27,6 +35,8 @@ function List({ todo, onSelect, onChangeStatus, onRemoveItem, status }) {
               onSelect={onSelect}
               onChangeStatus={onChangeStatus}
               onRemoveItem={onRemoveItem}
+              setIsVisible={setIsVisible}
+              isVisible={isVisible}
             />
           );
         })

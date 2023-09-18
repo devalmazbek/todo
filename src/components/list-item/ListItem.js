@@ -1,7 +1,20 @@
 import "./ListItem.css";
 
-function ListItem({ item, onSelect, onChangeStatus, onRemoveItem }) {
+function ListItem({
+  item,
+  onSelect,
+  onChangeStatus,
+  onRemoveItem,
+  isVisible,
+  setIsVisible,
+}) {
   const done = item.status ? "done" : "";
+
+  const handleSelectItem = () => {
+    onSelect(item);
+    setIsVisible(!isVisible);
+  };
+
   return (
     <div className="list-item">
       <div className="list-item-content">
@@ -20,7 +33,9 @@ function ListItem({ item, onSelect, onChangeStatus, onRemoveItem }) {
         </div>
       </div>
       <div className="list-item-btn">
-        <span className="material-symbols-outlined">edit</span>
+        <span className="material-symbols-outlined" onClick={handleSelectItem}>
+          edit
+        </span>
         <span
           className="material-symbols-outlined"
           onClick={() => onRemoveItem(item.id)}

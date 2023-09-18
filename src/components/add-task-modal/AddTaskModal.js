@@ -3,9 +3,15 @@ import "./AddTaskModal.css";
 
 let id = 10;
 
-function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
-  const [title, setTitle] = useState(null);
-  const [status, setStatus] = useState(0);
+function AddTaskModal({
+  onAddItem,
+  showModal,
+  isVisible,
+  todo,
+  selected = {},
+}) {
+  const [title, setTitle] = useState(selected?.title ? selected.title : null);
+  const [status, setStatus] = useState(selected?.status ? selected.status : 0);
 
   const handleCancel = () => {
     showModal(!isVisible);
@@ -16,7 +22,7 @@ function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
   };
 
   const handleStatus = (e) => {
-    setStatus(e.target.value);
+    setStatus(+e.target.value);
   };
 
   const handleAddItem = (e) => {
@@ -29,9 +35,21 @@ function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
       date: new Date().toLocaleDateString(),
     };
 
-    onAddItem([...todo, newItem]);
+    if (selected) {
+      const newTodos = todo.map((item) => {
+        if (item.id === selected.id) {
+          return { ...item, title: title, status: status };
+        }
+      });
+      onAddItem(newTodos);
+    } else {
+      onAddItem([...todo, newItem]);
+    }
+
     handleCancel();
   };
+
+  console.log(selected);
 
   return (
     <div className="container">
@@ -39,9 +57,9 @@ function AddTaskModal({ onAddItem, showModal, isVisible, todo }) {
         <h2>Add TODO</h2>
         <form>
           <label>Title</label>
-          <input type="text" onChange={handleTitle} />
+          <input type="text" onChange={handleTitle} value={title} />
           <label>Status</label>
-          <select onChange={handleStatus}>
+          <select onChange={handleStatus} value={status}>
             <option value={0}>Incomplete</option>
             <option value={1}>Completed</option>
           </select>

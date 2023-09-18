@@ -31,8 +31,6 @@ function App() {
     });
   };
 
-  console.log(status);
-
   return (
     <div className="app">
       <Header />
@@ -47,6 +45,8 @@ function App() {
         onChangeStatus={handleChangeStatus}
         onRemoveItem={handleRemoveItem}
         status={status}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
       />
       {isVisible && (
         <AddTaskModal
@@ -54,6 +54,7 @@ function App() {
           showModal={setIsVisible}
           isVisible={isVisible}
           todo={todo}
+          selected={selected}
         />
       )}
     </div>
